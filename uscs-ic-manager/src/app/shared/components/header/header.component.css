@@ -1,0 +1,19 @@
+.header-bar {
+  height: 4.55rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.header-bar h1 {
+  font-size: 1.25rem;
+  color: #333;
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+}

@@ -1,0 +1,36 @@
+<section class="sidebar">
+  <div class="header">
+    <a href="#">
+      <img src="uscs-logo.png" alt="Logo USCS" class="logo" />
+    </a>
+  </div>
+
+  <div class="separator-wrapper">
+    <hr class="separator" />
+    <label for="minimize" class="minimize-btn">
+      <input
+        type="checkbox"
+        id="minimize"
+        (change)="onMinimizeChange($event)"
+      />
+      <fa-icon [icon]="faAngleLeft"></fa-icon>
+    </label>
+  </div>
+
+  <div class="navigation">
+    <div class="section main-section">
+      <div class="title-wrapper">
+        <span class="title">Home</span>
+      </div>
+      <ul class="items">
+        <li class="item" routerLink="/upload">
+          <a href="#">
+            <fa-icon [icon]="faCloudArrowUp"></fa-icon>
+            <span class="item-text">Upload</span>
+            <span class="item-tooltip">Upload</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
