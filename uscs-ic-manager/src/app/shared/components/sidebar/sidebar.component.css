@@ -1,0 +1,296 @@
+:host {
+  --bg-primary: #fff;
+  --bg-secondary: #fafafa;
+
+  --logo-text: #000;
+
+  --separator: #d9d9d9;
+
+  --btn-hover: #f0efef;
+  --btn-active: #e5e5e5;
+
+  --item-text: #5c5e64;
+  --item-hover: #f6f6f6;
+  --item-active-bg: #e8e5e5;
+  --item-active-text: #000;
+
+  --tooltip-bg: #000;
+  --tooltip-text: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  width: 15rem;
+  transition: width 0.4s, background-color 0.3s;
+}
+
+.header {
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-secondary);
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.header a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.header a .logo {
+  height: 4rem;
+  max-width: 100%;
+  display: block;
+}
+
+.header button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  color: var(--logo-text);
+  max-width: 20rem;
+  transition: background-color 0.3s, max-width 0.4s, opacity 0.4s, visibility 0.4s, color 0.3s;
+}
+
+.header button i {
+  font-size: 1rem;
+}
+
+.header button:hover {
+  background-color: var(--btn-hover);
+}
+
+.header button:active {
+  background-color: var(--btn-active);
+}
+
+.separator-wrapper {
+  position: relative;
+}
+
+.separator {
+  margin: 0;
+  border: 0.5px solid var(--separator);
+  transition: border-color 0.3s;
+}
+
+.minimize-btn {
+  border: 1px solid var(--separator);
+  background-color: var(--bg-primary);
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(50%);
+  right: 0;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.minimize-btn input {
+  display: none;
+}
+
+.minimize-btn i {
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+  color: var(--logo-text);
+  transition: all 0.3s;
+}
+
+.minimize-btn:hover {
+  background-color: var(--btn-hover);
+}
+
+.minimize-btn:active {
+  background-color: var(--btn-active);
+}
+
+.navigation {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.title-wrapper {
+  height: 1.9rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.title {
+  color: var(--item-text);
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.items {
+  padding: 0;
+  margin-block: 0.9rem;
+  list-style-type: none;
+}
+
+.item a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0.8rem;
+  color: var(--item-text);
+  border-radius: 0.4rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.item a i {
+  width: 1rem;
+  transition: all 0.4s;
+}
+
+
+.item-text {
+  max-width: 20rem;
+  transition: all 0.4s;
+}
+
+.item a,
+.item-text,
+fa-icon {
+  transition: all 0.3s ease;
+}
+
+.item-tooltip {
+  position: absolute;
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  left: 109%;
+  padding: 0.4rem;
+  border-radius: 0.3rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  display: none;
+}
+
+.item-tooltip:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid var(--tooltip-bg);
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.item a:hover {
+  background-color: var(--item-hover);
+}
+
+.item a:active {
+  background-color: var(--item-active-bg);
+  color: var(--item-active-text);
+}
+
+.settings-section {
+  margin-top: 2rem;
+}
+
+/* Minimizado */
+
+:host(:has(#minimize:checked)) {
+  width: 6rem;
+}
+
+:host(:has(#minimize:checked)) button {
+  max-width: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+:host(:has(#minimize:checked)) .item-text {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+}
+
+:host(:has(#minimize:checked)) .item-tooltip {
+  display: block;
+}
+
+:host(:has(#minimize:checked)) .item:hover .item-tooltip {
+  left: 115%;
+  opacity: 1;
+  visibility: visible;
+}
+
+:host(:has(#minimize:checked)) .minimize-btn i {
+  transform: rotate(180deg);
+}
+
+:host(:has(#minimize:checked)) .item a {
+  justify-content: center;
+  padding: 0.8rem 0;
+}
+
+:host(:has(#minimize:checked)) .item a fa-icon {
+  font-size: 1.4rem;
+  transform: scale(1.1);
+}
+
+:host(:has(#minimize:checked)) .item {
+  display: flex;
+  justify-content: center;
+}
+
+:host(:has(#minimize:checked)) .item-text {
+  display: none;
+}
+
+:host(:has(#minimize:checked)) .item-tooltip {
+  display: none;
+}
+
+:host(:has(#minimize:checked)) .item-tooltip {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  left: calc(100% + 0.4rem);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+:host(:has(#minimize:checked)) .item:hover .item-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+:host(:has(#minimize:checked)) .title-wrapper {
+  justify-content: center;
+}
+
+:host(:has(#minimize:checked)) .title {
+  text-align: center;
+}

@@ -1,0 +1,24 @@
+<div class="upload-container">
+  <!-- Área de upload visível apenas se nenhum arquivo estiver selecionado -->
+  <div
+    class="upload-area"
+    *ngIf="!fileName"
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop($event)"
+  >
+    <label>
+      <fa-icon [icon]="faCloudArrowUp" size="2x"></fa-icon>
+      <span>Clique ou arraste um arquivo aqui</span>
+      <input type="file" hidden (change)="onFileSelected($event)" />
+    </label>
+  </div>
+
+  <!-- Exibição do arquivo selecionado -->
+  <div *ngIf="fileName" class="file-info">
+    <span>Arquivo selecionado: <strong>{{ fileName }}</strong></span>
+    <button (click)="removeFile()" aria-label="Remover">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
+  </div>
+
+</div>
